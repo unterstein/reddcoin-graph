@@ -9,6 +9,9 @@ import twitter4j.auth.AccessToken;
 
 import java.io.File;
 
+/**
+ * Import data from twitter to local data structure
+ */
 public class TwitterImport {
 
   private static final Logger log = LoggerFactory.getLogger(TwitterImport.class);
@@ -18,6 +21,7 @@ public class TwitterImport {
     if (args.length != 4) {
       log.error("Please provide the following twitter api information in this order:");
       log.error("$customerKey $customerSecret $accessToken $accessTokenSecret");
+      System.exit(1);
     }
     // setup twitter client
     TwitterFactory factory = new TwitterFactory();
@@ -53,7 +57,7 @@ public class TwitterImport {
       }
 
     } catch (Exception e) {
-      e.printStackTrace();
+      log.error("Unable to perform twitter import", e);
     }
   }
 }
