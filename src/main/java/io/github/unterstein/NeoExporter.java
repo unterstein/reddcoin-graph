@@ -48,6 +48,7 @@ public class NeoExporter {
     Session session = neo4jDriver.session();
 
     // delete previous nodes
+    log.info("Clearing old nodes");
     session.run("MATCH (u:User) DETACH DELETE u;");
 
     // create graph user nodes from known users
@@ -57,9 +58,11 @@ public class NeoExporter {
       createUsers += separator + "(: User {id: " + userNames.indexOf(userName) + ", name: \"" + userName + "\"} )";
       separator = ",";
     }
+    log.info("Creating user nodes");
     session.run(createUsers);
 
     // create connections between users based on known tips
+    log.info("Creating connections");
     for (TipEntry entry : entries) {
       session.run("MATCH (sender:User {id: " + entry.sender + "}), (receiver:User {id: " + entry.receiver + "}) MERGE (sender)-[r:TIPS { amount: " + entry.amount + "}]->(receiver)");
     }
