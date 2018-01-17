@@ -6,7 +6,7 @@ fun and rewarding for everyone.
 
 I am really enjoying the Reddcoin [Twitter Bot](https://twitter.com/tipreddcoin)! You can easily tweet something like
 `@tipreddcoin tip @WhateverUser 50 RDD` to transfer 50 Reddcoin from your personal TipBot wallet to the receiver`s TipBot wallet.
-It makes it incredibly easy to appreciate other and g
+It makes it incredibly easy to appreciate other and give feedback to other users.
 
 
 This is a highly connected and social activity and you can extract this activity to a graph. I am also really enjoying graph databases, like
