@@ -23,13 +23,36 @@ You can see an example here:
 ![Graph](./img/connections.png)
 
 With the Neo4j UI you can easily browse the connections between users, tips and others users. You can pick a starting node
-and navigate further from this starting point.
+and navigate further from this starting point. But you could also run more advanced queries against this data store.
 
-# Example cyphers
+For example you could query (it's called cypher in the Neo4j world) which users sends the most tips in the data set:
+
+```
 MATCH (sender: User)-[r:TIPS]->() return sender.name, count(r) as c order by c desc;
+```
 
+![Senders](./img/senders.png)
+
+
+Or you could query which users receives the most tips in the data set:
+
+```
 MATCH ()-[r:TIPS]->(receiver: User) return receiver.name, count(r) as c order by c desc;
+```
 
+![Receiver](./img/receivers.png)
+
+
+Or you could query how much tips are in the data set and what was the total amount of tips was:
+
+```
 MATCH ()-[r:TIPS]->() return count(r)
+```
 
+![Count](./img/tipcount.png)
+
+```
 MATCH ()-[r:TIPS]->() return sum(r.amount)
+```
+
+![Amount](./img/tipamount.png)
