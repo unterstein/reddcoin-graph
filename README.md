@@ -64,7 +64,8 @@ In this setup the user searched for patterns, which you can easily model with th
 
 # Limitations
 Unfortunately twitter restricted the tweets accessible via the API to 3200 per user. Therefore this graph is restricted to
-the latest 3200 interactions (;¬_¬).
+the latest 3200 interactions (;¬_¬). I would love to get all tweets of the [Twitter Bot](https://twitter.com/tipreddcoin) to make a
+complete graph of this community activities ٩( ᐛ )و.
 
 # How to get this started?
 
