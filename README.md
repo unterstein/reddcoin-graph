@@ -56,3 +56,34 @@ MATCH ()-[r:TIPS]->() return sum(r.amount)
 ```
 
 ![Amount](./img/tipamount.png)
+
+# Even more is possible
+It is possible to do even more advanced and sophisticated cyphers with the Neo4j data store. For example the
+research about the panama papers was done with Neo4j, see this [article](https://neo4j.com/blog/analyzing-panama-papers-neo4j/).
+In this setup the user searched for patterns, which you can easily model with the cypher query language.
+
+# Limitations
+Unfortunately twitter restricted the tweets accessible via the API to 3200 per user. Therefore this graph is restricted to
+the latest 3200 interactions (;¬_¬).
+
+# How to get this started?
+
+## Install Neo4j
+Go to the [download page](https://neo4j.com/download/) and download a binary suitable for your platform.
+
+## Build the project
+You can simply run `mvn clean package` which builds a jar file which is located in the `target` directory.
+
+## Run the project
+To run the twitter importer, you need to run the following command (with your twitter credentials) in this folder:
+
+```
+java -cp ./target/reddcoin-graph-0.0.1-SNAPSHOT.jar io.github.unterstein.TwitterImport $customerKey $customerSecret $accessToken $accessTokenSecret
+```
+
+
+To run the Neo4j exporter, you need to run the following command (with your Neo4j credentials) in this folder:
+
+```
+java -cp ./target/reddcoin-graph-0.0.1-SNAPSHOT.jar io.github.unterstein.Neo4jExporter $neo4jUri $neo4jUser $neo4jPassword
+```
