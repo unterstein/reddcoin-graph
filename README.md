@@ -146,13 +146,13 @@ In this setup the user searched for patterns, which you can easily model with th
 
 
 # How to get this started?
-Do you want to run your analysis on your own? This is no problem! You can decide if you want to go with the provided data set, that is attached in the folder `data` and import this in your existing Neo4j database, or you can run the twitter importer on your own to have the latest tweets in your analisys.
+Do you want to run your analysis on your own? This is no problem! You can decide if you want to go with the provided data set, that is attached in the file `data.cypher` and import this in your existing Neo4j database, or you can run the twitter importer on your own to have the latest tweets in your analisys.
 
 ## Install Neo4j
 Go to the [download page](https://neo4j.com/download/) and download a binary suitable for your platform.
 
 ### Import the provided data set to your Neo4j instance
-
+Open the file `data.cypher` and copy the content to your clipboard. Point the web browser of you choise to `http://localhost:7474` and open the Neo4j browser. Paste the content of your clipboard to the text field at the top of the browser and hit the run button. Get a nice cup of coffee while your data is imported. You can start with a fresh data set and a fresh cup of coffee when you arrive back at your computer ☕.
 
 ### Run the twitter importer on your own
 To run the twitter importer, please follow the instructions below 👇
