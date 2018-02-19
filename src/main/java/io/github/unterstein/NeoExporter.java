@@ -73,9 +73,10 @@ public class NeoExporter {
           + ", timestamp: " + entry.timestamp
           + ", dayOfWeek: '" + date.getDayOfWeek() + "'"
           + ", hour: " + date.getHour()
-          + ", day: " + date.getHour()
-          + ", month: " + date.getMonthValue()
+          + ", day: " + date.getDayOfMonth()
+          + ", month: '" + date.getMonth() + "'"
           + ", year: " + date.getYear()
+          + ", date: '" + date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth() + "'"
           + "}]->(receiver)");
     }
   }
