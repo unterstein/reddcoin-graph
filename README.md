@@ -130,6 +130,15 @@ MATCH ()-[r:TIPS]->() return r.date, sum(r.amount) as c order by c desc;
 ![Date Amount](./img/dateamount.png)
 
 
+Some users are tipping themselves. I personally don't know, why you would like to do this, but this creates nice graphs though  `¯\_(ツ)_/¯`.
+
+```
+MATCH (u)-[:TIPS]->(u) return u;
+```
+
+![Self tip](./img/selftip.png)
+
+
 # Even more is possible
 It is possible to do even more advanced and sophisticated cyphers with the Neo4j data store. For example the
 research about the panama papers was done with Neo4j, see this [article](https://neo4j.com/blog/analyzing-panama-papers-neo4j/).
