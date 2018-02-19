@@ -9,6 +9,7 @@ import twitter4j.auth.AccessToken;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 /**
  * Import data from twitter to local data structure
@@ -36,7 +37,7 @@ public class TwitterImport {
     int i = 0;
     QueryResult result;
     try {
-      Query query = new Query("'you have received a tip' from:tipreddcoin");
+      Query query = new Query("you received a tip from:tipreddcoin");
       query.setCount(80);
       do {
         log.info("Starting run #" + i);
@@ -48,14 +49,15 @@ public class TwitterImport {
           log.warn(String.format("Sleeping %d seconds to cool down rate limit", coolDown));
           Thread.sleep(coolDown * 1000);
         } else {
-//          if (result.getTweets().size() == 0) {
-//            log.info("Did not found new tweets, stopping.");
-//            break;
-//          }
-          log.error(""+result.getTweets().size());
-          for (Status status : result.getTweets()) {
+          List<Status> tweets = result.getTweets();
+          if (tweets.size() == 0) {
+            log.info("Did not found new tweets, stopping.");
+            break;
+          }
+          log.info(String.format("Found %d tweets", tweets.size()));
+          for (Status status : tweets) {
             String text = status.getText();
-            if (text.contains("confirmed:  -->>@")) {
+            if (text.contains(", you have received a tip of Ɍ")) {
               String receiver = StringUtils.substringBefore(text, ", you have received a");
               String sender = StringUtils.substringBetween(text, " from ", ".");
               String amount = StringUtils.substringBetween(text, "Ɍ", " Reddcoins");
