@@ -96,6 +96,8 @@ MATCH ()-[r:TIPS]->() return r.month, count(r) as c order by c desc;
 ![Month](./img/month.png)
 
 
+There is no clear pattern on tips based on the day of the month.
+
 ```
 MATCH ()-[r:TIPS]->() return r.day, count(r) as c order by c desc;
 ```
@@ -103,12 +105,11 @@ MATCH ()-[r:TIPS]->() return r.day, count(r) as c order by c desc;
 ![Day](./img/day.png)
 
 
+The most popular hours of the day are `15-19 o'clock UTC`. This is `16-20 o'clock CET`, `7-11 o'clock west coast` or `10-14 o'clock east coast`.
+
 ```
 MATCH ()-[r:TIPS]->() return r.hour, count(r) as c order by c desc;
 ```
-
-
-The most popular hours of the day are 15-19 o'clock UTC. This is 16-20 o'clock CET, 7-11 o'clock west coast or 10-14 o'clock east coast.
 
 ![Hour](./img/hour.png)
 
