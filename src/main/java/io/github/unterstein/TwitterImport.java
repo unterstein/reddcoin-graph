@@ -38,7 +38,8 @@ public class TwitterImport {
     QueryResult result;
     try {
       Query query = new Query("you received a tip from:tipreddcoin");
-      query.setCount(80);
+      query.setCount(100);
+
       do {
         log.info("Starting run #" + i);
         log.info(query.toString());
