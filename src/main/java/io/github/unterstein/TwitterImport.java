@@ -34,21 +34,25 @@ public class TwitterImport {
     // search in twitter timeline
     File outputFile = new File("output.txt");
     int i = 0;
+    QueryResult result;
     try {
-      Query query = new Query("\"you have received a tip\" from:tipreddcoin");
-      while (true) {
+      Query query = new Query("'you have received a tip' from:tipreddcoin");
+      query.setCount(80);
+      do {
         log.info("Starting run #" + i);
-        query.setCount(100);
-        QueryResult result = twitter.search(query);
+        log.info(query.toString());
+        result = twitter.search(query);
+        log.info(String.format("Rate limit status remaining: %d", result.getRateLimitStatus().getRemaining()));
         if (result.getRateLimitStatus().getRemaining() == 0) {
           int coolDown = (result.getRateLimitStatus().getSecondsUntilReset() + 2);
           log.warn(String.format("Sleeping %d seconds to cool down rate limit", coolDown));
           Thread.sleep(coolDown * 1000);
         } else {
-          if (result.getTweets().size() == 0) {
-            log.info("Did not found new tweets, stopping.");
-            break;
-          }
+//          if (result.getTweets().size() == 0) {
+//            log.info("Did not found new tweets, stopping.");
+//            break;
+//          }
+          log.error(""+result.getTweets().size());
           for (Status status : result.getTweets()) {
             String text = status.getText();
             if (text.contains("confirmed:  -->>@")) {
@@ -62,11 +66,9 @@ public class TwitterImport {
             }
           }
         }
-        if (result.hasNext()) {
-          query = result.nextQuery();
-        }
         i++;
-      }
+        Thread.sleep(2000);
+      } while ((query = result.nextQuery()) != null);
     } catch (Exception e) {
       log.error("Unable to perform twitter import", e);
     }
