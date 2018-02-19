@@ -1,4 +1,4 @@
-![Header](./img/header.png)
+![Header](./img/header2.png)
 
 # Whats this?
 The crypto currency [Reddcoin](https://www.reddcoin.com/) is a social currency
