@@ -51,7 +51,7 @@ MATCH ()-[r:TIPS]->(receiver: User) return receiver.name, count(r) as c order by
 ![Receiver](./img/receivers.png)
 
 
-Or you could query how much tips are in the data set and what was the total amount of tips over `12.000 tips`.
+Or you could query how much tips are in the data set and you see over `12.000 tips`.
 
 ```
 MATCH ()-[r:TIPS]->() return count(r)
