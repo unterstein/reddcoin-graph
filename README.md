@@ -1,3 +1,5 @@
+![Header](./img/header.png)
+
 # Whats this?
 The crypto currency [Reddcoin](https://www.reddcoin.com/) is a social currency
 that makes digital currency easy for the general public. Reddcoin achieves this by integrating a digital
