@@ -25,11 +25,11 @@ If you follow the path of code in this repository, you will see that this projec
 1. A program to get all tweets by the Redcoin Twitter bot and stores them locally
 2. A program that takes this data and transforms it into a connected graph, where users are nodes and tips are edges.
 
-You can see an example here:
+If you go to your Neo4j browser, you can see a graph similar to this one:
 
 ![Graph](./img/connections.png)
 
-With the Neo4j UI you can easily browse the connections between users, tips and others users. You can pick a starting node
+With the Neo4j browser you can easily browse the connections between users, tips and others users. You can pick a starting node
 and navigate further from this starting point. But you could also run more advanced queries against this data store.
 
 For example you could query (it's called cypher in the Neo4j world) which users sends the most tips in the data set:
