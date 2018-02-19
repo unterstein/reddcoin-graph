@@ -7,10 +7,11 @@ fun and rewarding for everyone.
 One of the best things are the tip bots, for example the [Twitter Bot](https://twitter.com/tipreddcoin)! You can easily tweet something like this:
 
 ```
-@tipreddcoin tip @unterstein 50 RDD
+@tipreddcoin +tip @unterstein 50 RDD
 ```
 
-Sending this tweet will transfer 50 Reddcoin from your personal TipBot wallet to the receiver's TipBot wallet.
+Sending this tweet will transfer 50 Reddcoin from your personal tip bot wallet to the receiver's tip bot wallet.
+You need to transfer some coins to your personal tip bot wallet before you start :).
 It makes it incredibly easy to appreciate other user and give feedback to other users.
 
 This is a highly connected and social activity and you can extract this activity to a graph and a graph database, like [Neo4j](https://github.com/neo4j/neo4j).
@@ -152,7 +153,7 @@ Do you want to run your analysis on your own? This is no problem! You can decide
 Go to the [download page](https://neo4j.com/download/) and download a binary suitable for your platform.
 
 ### Import the provided data set to your Neo4j instance
-Open the file `data.cypher` and copy the content to your clipboard. Point the web browser of you choise to `http://localhost:7474` and open the Neo4j browser. Paste the content of your clipboard to the text field at the top of the browser and hit the run button. Get a nice cup of coffee while your data is imported. You can start with a fresh data set and a fresh cup of coffee when you arrive back at your computer ☕.
+Open the file `data.cypher` and copy the content to your clipboard. Point the web browser of you choise to `http://localhost:7474` and open the Neo4j browser. Paste the content of your clipboard to the text field at the top of the browser and hit the run button. Get a nice cup of coffee while your data is imported. You can start with a fresh data set and a fresh cup of coffee when you arrive back at your computer ☕
 
 ### Run the twitter importer on your own
 To run the twitter importer, please follow the instructions below 👇
