@@ -50,7 +50,7 @@ MATCH ()-[r:TIPS]->(receiver: User) return receiver.name, count(r) as c order by
 ![Receiver](./img/receivers.png)
 
 
-Or you could query how much tips are in the data set and what was the total amount of tips over 12.000 tips.
+Or you could query how much tips are in the data set and what was the total amount of tips over `12.000 tips`.
 
 ```
 MATCH ()-[r:TIPS]->() return count(r)
@@ -59,7 +59,7 @@ MATCH ()-[r:TIPS]->() return count(r)
 ![Count](./img/tipcount.png)
 
 
-Or you could query how much Reddcoins were tipped overall, which is `63942358 Reddcoins`. Based on the current exchange rate of roughly `0.008` Dollar per Reddcoin, this is over $500.000. This is pretty amazing for a tip bot on twitter! 🎉
+Or you could query how much Reddcoins were tipped overall, which is `63942358 Reddcoins`. Based on the current exchange rate of roughly `0.008` Dollar per Reddcoin, this is `over $500.000`. This is pretty amazing for a tip bot on twitter! 🎉
 
 ```
 MATCH ()-[r:TIPS]->() return sum(r.amount)
@@ -94,11 +94,13 @@ MATCH ()-[r:TIPS]->() return r.month, count(r) as c order by c desc;
 
 ![Month](./img/month.png)
 
+
 ```
 MATCH ()-[r:TIPS]->() return r.day, count(r) as c order by c desc;
 ```
 
 ![Day](./img/day.png)
+
 
 ```
 MATCH ()-[r:TIPS]->() return r.hour, count(r) as c order by c desc;
@@ -119,7 +121,7 @@ MATCH ()-[r:TIPS]->() return r.date, count(r) as c order by c desc;
 ![Date](./img/date.png)
 
 
-But the most popular date in terms of tip amount are `2014-5-6`, `2014-3-1`, `2014-12-21` with each over `2 Million` Reddcoins tipped per day.
+But the most popular date in terms of tip amount are `2014-5-6`, `2014-3-1`, `2014-12-21` with each over `2 Million` Reddcoins tipped per day. If we research the exchange rate of RDD to USD on `2014-5-6`, we see an exchange price of `0.000022` Dollar per Reddcoin. So this day had a total amount of around `$50` based on the past exchange rate. With the current exchange rate this would over `$18.000`.
 
 ```
 MATCH ()-[r:TIPS]->() return r.date, sum(r.amount) as c order by c desc;
