@@ -4,13 +4,20 @@ that makes digital currency easy for the general public. Reddcoin achieves this 
 currency platform seamlessly with all major social networks to make the process of sending and receiving money
 fun and rewarding for everyone.
 
-I am really enjoying the Reddcoin [Twitter Bot](https://twitter.com/tipreddcoin)! You can easily tweet something like
-`@tipreddcoin tip @WhateverUser 50 RDD` to transfer 50 Reddcoin from your personal TipBot wallet to the receiver`s TipBot wallet.
-It makes it incredibly easy to appreciate other and give feedback to other users.
+One of the best things are the tip bots, for example the [Twitter Bot](https://twitter.com/tipreddcoin)! You can easily tweet something like this:
 
+```
+@tipreddcoin tip @unterstein 50 RDD
+```
 
-This is a highly connected and social activity and you can extract this activity to a graph. I am also really enjoying graph databases, like
-[Neo4j](https://neo4j.com/). With this technology it is possible to model your data as graph, which fits this tipping behavior very well.
+Sending this tweet will transfer 50 Reddcoin from your personal TipBot wallet to the receiver's TipBot wallet.
+It makes it incredibly easy to appreciate other user and give feedback to other users.
+
+This is a highly connected and social activity and you can extract this activity to a graph and a graph database, like [Neo4j](https://github.com/neo4j/neo4j).
+You work with a flexible network structure of nodes and relationships rather than static tables as you would do in a traditional database. 
+With this technology it is possible to model your data as graph, which fits this tipping behavior very well and the graph makes it really easy to 
+query your data and don't bother about joins or other complex operations of a SQL-like database. You can learn more on the [Neo4j website](https://neo4j.com/).
+
 
 # The graph
 If you follow the path of code in this repository, you will see that this project basically contains two elements.
@@ -57,25 +64,29 @@ MATCH ()-[r:TIPS]->() return sum(r.amount)
 
 ![Amount](./img/tipamount.png)
 
+
 # Even more is possible
 It is possible to do even more advanced and sophisticated cyphers with the Neo4j data store. For example the
 research about the panama papers was done with Neo4j, see this [article](https://neo4j.com/blog/analyzing-panama-papers-neo4j/).
 In this setup the user searched for patterns, which you can easily model with the cypher query language.
 
-# Limitations
-Unfortunately twitter restricted the tweets accessible via the API to 3200 per user. Therefore this graph is restricted to
-the latest 3200 interactions (;¬_¬). I would love to get all tweets of the [Twitter Bot](https://twitter.com/tipreddcoin) to make a
-complete graph of this community activities ٩( ᐛ )و.
 
 # How to get this started?
+Do you want to run your analysis on your own? This is no problem! You can decide if you want to go with the provided data set, that is attached in the folder `data` and import this in your existing Neo4j database, or you can run the twitter importer on your own to have the latest tweets in your analisys.
 
 ## Install Neo4j
 Go to the [download page](https://neo4j.com/download/) and download a binary suitable for your platform.
 
-## Build the project
+### Import the provided data set to your Neo4j instance
+
+
+### Run the twitter importer on your own
+To run the twitter importer, please follow the instructions below 👇
+
+### Build the project
 You can simply run `mvn clean package` which builds a jar file which is located in the `target` directory.
 
-## Run the project
+### Run the project
 To run the twitter importer, you need to run the following command (with your twitter credentials) in this folder:
 
 ```
