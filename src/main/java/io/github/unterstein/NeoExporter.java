@@ -10,6 +10,9 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +43,7 @@ public class NeoExporter {
       if (!userNames.contains(split[1])) {
         userNames.add(split[1]);
       }
-      entries.add(new TipEntry(userNames.indexOf(split[0]), userNames.indexOf(split[1]), Integer.valueOf(split[2])));
+      entries.add(new TipEntry(userNames.indexOf(split[0]), userNames.indexOf(split[1]), Double.valueOf(split[2]), Long.valueOf(split[3])));
     }
 
     // setup neo4j driver
@@ -64,7 +67,16 @@ public class NeoExporter {
     // create connections between users based on known tips
     log.info("Creating connections");
     for (TipEntry entry : entries) {
-      session.run("MATCH (sender:User {id: " + entry.sender + "}), (receiver:User {id: " + entry.receiver + "}) MERGE (sender)-[r:TIPS { amount: " + entry.amount + "}]->(receiver)");
+      LocalDateTime date = Instant.ofEpochMilli(entry.timestamp).atZone(ZoneId.systemDefault()).toLocalDateTime();
+      session.run("MATCH (sender:User {id: " + entry.sender + "}), (receiver:User {id: " + entry.receiver + "}) MERGE (sender)-[r:TIPS { "
+          + "amount: " + entry.amount
+          + ", timestamp: " + entry.timestamp
+          + ", dayOfWeek: '" + date.getDayOfWeek() + "'"
+          + ", hour: " + date.getHour()
+          + ", day: " + date.getHour()
+          + ", month: " + date.getMonthValue()
+          + ", year: " + date.getYear()
+          + "}]->(receiver)");
     }
   }
 
@@ -74,12 +86,14 @@ public class NeoExporter {
   private static class TipEntry {
     int sender;
     int receiver;
-    int amount;
+    double amount;
+    private long timestamp;
 
-    TipEntry(int sender, int receiver, int amount) {
+    TipEntry(int sender, int receiver, double amount, long timestamp) {
       this.sender = sender;
       this.receiver = receiver;
       this.amount = amount;
+      this.timestamp = timestamp;
     }
   }
 }
