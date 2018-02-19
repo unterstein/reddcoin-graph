@@ -32,7 +32,7 @@ If you go to your Neo4j browser, you can see a graph similar to this one:
 With the Neo4j browser you can easily browse the connections between users, tips and others users. You can pick a starting node
 and navigate further from this starting point. But you could also run more advanced queries against this data store.
 
-For example you could query (it's called cypher in the Neo4j world) which users sends the most tips in the data set:
+For example you could query (it's called cypher in the Neo4j world) which users sends the most tips in the data set.
 
 ```
 MATCH (sender: User)-[r:TIPS]->() return sender.name, count(r) as c order by c desc;
@@ -41,7 +41,7 @@ MATCH (sender: User)-[r:TIPS]->() return sender.name, count(r) as c order by c d
 ![Senders](./img/senders.png)
 
 
-Or you could query which users receives the most tips in the data set:
+Or you could query which users receives the most tips in the data set.
 
 ```
 MATCH ()-[r:TIPS]->(receiver: User) return receiver.name, count(r) as c order by c desc;
@@ -50,7 +50,7 @@ MATCH ()-[r:TIPS]->(receiver: User) return receiver.name, count(r) as c order by
 ![Receiver](./img/receivers.png)
 
 
-Or you could query how much tips are in the data set and what was the total amount of tips was:
+Or you could query how much tips are in the data set and what was the total amount of tips over 12.000 tips.
 
 ```
 MATCH ()-[r:TIPS]->() return count(r)
@@ -58,11 +58,74 @@ MATCH ()-[r:TIPS]->() return count(r)
 
 ![Count](./img/tipcount.png)
 
+
+Or you could query how much Reddcoins were tipped overall, which is `63942358 Reddcoins`. Based on the current exchange rate of roughly `0.008` Dollar per Reddcoin, this is over $500.000. This is pretty amazing for a tip bot on twitter! 🎉
+
 ```
 MATCH ()-[r:TIPS]->() return sum(r.amount)
 ```
 
 ![Amount](./img/tipamount.png)
+
+
+You can see, that `Monday` and `Friday` are the most popular days for tips.
+
+```
+MATCH ()-[r:TIPS]->() return r.dayOfWeek, count(r) as c order by c desc;
+```
+
+![Weekday](./img/weekday.png)
+
+
+`2014` was by far the most popular year of this tip bot.
+
+```
+MATCH ()-[r:TIPS]->() return r.year, count(r) as c order by c desc;
+```
+
+![Year](./img/year.png)
+
+
+`September`, `August` and `October` are the most popular month of tipping. Maybe because it is cold outisde and you can spend more time on Twitter ;-).
+
+```
+MATCH ()-[r:TIPS]->() return r.month, count(r) as c order by c desc;
+```
+
+![Month](./img/month.png)
+
+```
+MATCH ()-[r:TIPS]->() return r.day, count(r) as c order by c desc;
+```
+
+![Day](./img/day.png)
+
+```
+MATCH ()-[r:TIPS]->() return r.hour, count(r) as c order by c desc;
+```
+
+
+The most popular hours of the day are 15-19 o'clock UTC. This is 16-20 o'clock CET, 7-11 o'clock west coast or 10-14 o'clock east coast.
+
+![Hour](./img/hour.png)
+
+
+And the most popular date were `2014-9-15`, `2014-9-13`, `2014-9-14` and `2014-9-11` with over 1000 tips on these 4 days only.
+
+```
+MATCH ()-[r:TIPS]->() return r.date, count(r) as c order by c desc;
+```
+
+![Date](./img/date.png)
+
+
+But the most popular date in terms of tip amount are `2014-5-6`, `2014-3-1`, `2014-12-21` with each over `2 Million` Reddcoins tipped per day.
+
+```
+MATCH ()-[r:TIPS]->() return r.date, sum(r.amount) as c order by c desc;
+```
+
+![Date Amount](./img/dateamount.png)
 
 
 # Even more is possible
