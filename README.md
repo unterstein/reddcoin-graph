@@ -143,6 +143,15 @@ MATCH (u)-[:TIPS]->(u) return u;
 ![Self tip](./img/selftip.png)
 
 
+We can also query the highest tips. You can see very high tips. But you can also see high tips to charity organizations like [Alzheimer's Assoc.](https://twitter.com/alzassociation), [Water.org](https://twitter.com/Water) or [StopTicsToday](https://twitter.com/StopTicsToday).
+
+```
+MATCH (s: User)-[t:TIPS]->(r: User) return s.name as sender, t.amount as c, t.date, r.name as receiver order by c desc;
+```
+
+![Self tip](./img/high.png)
+
+
 # Even more is possible
 It is possible to do even more advanced and sophisticated cyphers with the Neo4j data store. For example the
 research about the panama papers was done with Neo4j, see this [article](https://neo4j.com/blog/analyzing-panama-papers-neo4j/).
