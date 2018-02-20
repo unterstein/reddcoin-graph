@@ -16,6 +16,8 @@ Sending this tweet will transfer 50 Reddcoin from your personal tip bot wallet t
 You need to transfer some coins to your personal tip bot wallet before you start :).
 It makes it incredibly easy to appreciate other user and give feedback to other users.
 
+But this is just one bot of this currency. There are bots for [facebook](https://de-de.facebook.com/reddcoin/), [reddit](https://www.reddcoin.com/reddit-tip-bot-is-ready/) and also a [chrome plugin](https://chrome.google.com/webstore/detail/reddcoin-tip-platform/lcoponfclppkdadbglnkhedjonbfegic) ❤ Most activity is on [reddit](https://www.reddit.com/r/reddCoin).
+
 This is a highly connected and social activity and you can extract this activity to a graph and a graph database, like [Neo4j](https://github.com/neo4j/neo4j).
 You work with a flexible network structure of nodes and relationships rather than static tables as you would do in a traditional database. 
 With this technology it is possible to model your data as graph, which fits this tipping behavior very well and the graph makes it really easy to 
@@ -34,6 +36,9 @@ If you go to your Neo4j browser, you can see a graph similar to this one:
 
 With the Neo4j browser you can easily browse the connections between users, tips and others users. You can pick a starting node
 and navigate further from this starting point. But you could also run more advanced queries against this data store.
+
+__About the example data:__ I ran the script before christmas, so there is no data of 2018 included :-/
+
 
 For example you could query (it's called cypher in the Neo4j world) which users sends the most tips in the data set.
 
