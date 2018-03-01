@@ -52,7 +52,7 @@ public class NeoExporter {
 
     // delete previous nodes
     log.info("Clearing old nodes");
-    session.run("MATCH (u:User) DETACH DELETE u;");
+    session.run("MATCH (u:User) DETACH DELETE u;").consume();
 
     // create graph user nodes from known users
     String createUsers = "CREATE ";
@@ -62,7 +62,7 @@ public class NeoExporter {
       separator = ",";
     }
     log.info("Creating user nodes");
-    session.run(createUsers);
+    session.run(createUsers).consume();
 
     // create connections between users based on known tips
     log.info("Creating connections");
@@ -77,7 +77,7 @@ public class NeoExporter {
           + ", month: '" + date.getMonth() + "'"
           + ", year: " + date.getYear()
           + ", date: '" + date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth() + "'"
-          + "}]->(receiver)");
+          + "}]->(receiver)").consume();
     }
   }
 
